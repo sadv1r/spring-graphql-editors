@@ -1,0 +1,6 @@
+rootProject.name = 'spring-graphql-editors'
+include 'graphql-voyager-spring-boot-starter'
+include 'graphql-graphiql-spring-boot-starter'
+include 'graphql-playground-spring-boot-starter'
+include 'samples:web-sample'
+include 'samples:webflux-sample'

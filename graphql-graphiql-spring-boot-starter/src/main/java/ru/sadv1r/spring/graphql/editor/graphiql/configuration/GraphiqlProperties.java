@@ -1,0 +1,112 @@
+package ru.sadv1r.spring.graphql.editor.graphiql.configuration;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.FileCopyUtils;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+
+/**
+ * Configuration properties for the GraphiQL GraphQL editor.
+ *
+ * @see <a href="https://github.com/IvanGoncharov/graphql-voyager#properties">GraphQL GraphiQL Properties</a>
+ */
+@ConfigurationProperties(prefix = "spring.graphql.graphiql")
+public class GraphiqlProperties {
+
+    private boolean enabled = true;
+
+    private String path = "/graphiql";
+
+    private String query;
+
+    private Map<String, String> variables;
+
+    private Map<String, String> headers;
+
+    private Cdn cdn = Cdn.UNPKG;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = readIfPath(query);
+    }
+
+    public Map<String, String> getVariables() {
+        return variables;
+    }
+
+    public void setVariables(Map<String, String> variables) {
+        this.variables = variables;
+    }
+
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
+    }
+
+    public Cdn getCdn() {
+        return cdn;
+    }
+
+    public void setCdn(Cdn cdn) {
+        this.cdn = cdn;
+    }
+
+    private static String readIfPath(String query) {
+        if (query == null) {
+            return null;
+        }
+
+        if (query.matches("^.*\\.graphql$")) {
+            try (Reader reader = new InputStreamReader(new ClassPathResource(query).getInputStream(), StandardCharsets.UTF_8)) {
+                return FileCopyUtils.copyToString(reader);
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        }
+
+        return query;
+    }
+
+    public enum Cdn {
+
+        JSDELIVR,
+        UNPKG;
+
+        public String getHost() {
+            return switch (this) {
+                case JSDELIVR -> "https://cdn.jsdelivr.net/npm";
+                case UNPKG -> "https://unpkg.com";
+            };
+        }
+
+    }
+
+}

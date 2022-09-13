@@ -1,0 +1,129 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'org.springframework.boot' version '2.7.4' apply false
+}
+
+ext {
+    moduleProjects = [
+            project(":graphql-voyager-spring-boot-starter"),
+            project(":graphql-graphiql-spring-boot-starter"),
+            project(":graphql-playground-spring-boot-starter")
+    ]
+}
+
+subprojects {
+    group 'ru.sadv1r.spring.graphql'
+    version '0.1.0'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+configure(moduleProjects) {
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+    apply plugin: 'signing'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom SpringBootPlugin.BOM_COORDINATES
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    java {
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+//            from components.java
+                artifact jar
+                artifact sourcesJar
+                artifact javadocJar
+
+                pom {
+                    afterEvaluate {
+                        name = project.description
+                        description = project.description
+                    }
+                    url = 'https://github.com/sadv1r/spring-graphql-editors'
+                    licenses {
+                        license {
+                            name = "MIT License"
+                            url = "https://opensource.org/licenses/mit-license.php"
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'sadv1r'
+                            name = 'Dmitry Ivanov'
+                            email = 'me@sadv1r.ru'
+                        }
+                    }
+                    scm {
+                        url = 'https://github.com/sadv1r/spring-graphql-editors'
+                        connection = 'scm:git:git://github.com/sadv1r/spring-graphql-editors.git'
+                        developerConnection = 'scm:git:git://github.com/sadv1r/spring-graphql-editors.git'
+                    }
+                    issueManagement {
+                        system = 'GitHub'
+                        url = 'https://github.com/sadv1r/spring-graphql-editors/issues'
+                    }
+                }
+                // to avoid "Publication only contains dependencies and/or constraints without a version" error
+                // see https://docs.gradle.org/7.5.1/userguide/publishing_maven.html#publishing_maven:resolved_dependencies
+                versionMapping {
+                    usage('java-api') {
+                        fromResolutionOf('runtimeClasspath')
+                    }
+                    usage('java-runtime') {
+                        fromResolutionResult()
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                credentials {
+                    credentials {
+                        url = version.endsWith('SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+                        username = System.env.OSSRH_USERNAME ?: project.findProperty('ossrhUsername') ?: ''
+                        password = System.env.OSSRH_PASSWORD ?: project.findProperty('ossrhPassword') ?: ''
+                    }
+                }
+            }
+        }
+
+        signing {
+            sign publishing.publications.mavenJava
+        }
+
+        javadoc {
+            if (JavaVersion.current().isJava9Compatible()) {
+                options.addBooleanOption('html5', true)
+            }
+        }
+    }
+}

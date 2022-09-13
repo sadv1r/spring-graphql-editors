@@ -1,0 +1,8 @@
+description = 'GraphQL Voyager Spring Boot Starter'
+
+dependencies {
+    compileOnly 'org.springframework:spring-webmvc'
+    compileOnly 'org.springframework:spring-webflux'
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+}

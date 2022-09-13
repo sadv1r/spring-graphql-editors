@@ -1,0 +1,18 @@
+spring:
+  graphql:
+    graphiql:
+      query: example/query.graphql
+      variables:
+        id: 1
+      headers:
+        x-test: test
+    playground:
+      settings:
+        editor:
+          cursor-shape: line
+          font-family: Consolas
+          font-size: 14
+          reuse-headers: true
+          theme: light
+      headers:
+        x-test: test

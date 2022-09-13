@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.4'
+    id 'io.spring.dependency-management'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-graphql'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation project(':graphql-voyager-spring-boot-starter')
+    implementation project(':graphql-graphiql-spring-boot-starter')
+    implementation project(':graphql-playground-spring-boot-starter')
+}

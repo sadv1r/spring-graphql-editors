@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:src="|${cdnHost}/react@16/umd/react.production.min.js|"></script>
+    <script th:src="|${cdnHost}/react-dom@16/umd/react-dom.production.min.js|"></script>
+
+    <link
+            rel="stylesheet"
+            th:href="|${cdnHost}/graphql-voyager/dist/voyager.css|"
+    />
+    <script th:src="|${cdnHost}/graphql-voyager/dist/voyager.min.js|"></script>
+</head>
+<body>
+<div id="voyager">Loading...</div>
+<script th:inline="javascript">
+    function introspectionProvider(introspectionQuery) {
+        return fetch('[(${serverPath})]', {
+            method: 'post',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({query: introspectionQuery}),
+            credentials: 'include'
+        })
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (responseBody) {
+                try {
+                    return JSON.parse(responseBody);
+                } catch (error) {
+                    return responseBody;
+                }
+            });
+    }
+
+    GraphQLVoyager.init(document.getElementById('voyager'), {
+        introspection: introspectionProvider,
+        displayOptions: {
+            skipRelay: [[${displayOptions.skipRelay}]],
+            skipDeprecated: [[${displayOptions.skipDeprecated}]],
+            rootType: [[${displayOptions.rootType}]],
+            sortByAlphabet: [[${displayOptions.sortByAlphabet}]],
+            showLeafFields: [[${displayOptions.showLeafFields}]],
+            hideRoot: [[${displayOptions.hideRoot}]],
+        },
+        hideDocs: [[${hideDocs}]],
+        hideSettings: [[${hideSettings}]],
+    });
+</script>
+</body>
+</html>

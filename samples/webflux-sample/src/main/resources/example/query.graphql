@@ -1,0 +1,6 @@
+query($id: ID!) {
+  artifactRepository(id: $id) {
+    name
+    url
+  }
+}
