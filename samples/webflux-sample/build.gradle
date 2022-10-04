@@ -11,3 +11,9 @@ dependencies {
     implementation project(':graphql-graphiql-spring-boot-starter')
     implementation project(':graphql-playground-spring-boot-starter')
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}

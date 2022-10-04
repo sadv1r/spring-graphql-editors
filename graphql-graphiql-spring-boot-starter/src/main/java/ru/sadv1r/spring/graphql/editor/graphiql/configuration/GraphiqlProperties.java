@@ -101,10 +101,14 @@ public class GraphiqlProperties {
         UNPKG;
 
         public String getHost() {
-            return switch (this) {
-                case JSDELIVR -> "https://cdn.jsdelivr.net/npm";
-                case UNPKG -> "https://unpkg.com";
-            };
+            switch (this) {
+                case JSDELIVR:
+                    return "https://cdn.jsdelivr.net/npm";
+                case UNPKG:
+                    return "https://unpkg.com";
+                default:
+                    throw new IllegalArgumentException();
+            }
         }
 
     }
