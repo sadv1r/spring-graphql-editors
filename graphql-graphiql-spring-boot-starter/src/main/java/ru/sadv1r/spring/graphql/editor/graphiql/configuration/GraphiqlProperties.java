@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Configuration properties for the GraphiQL GraphQL editor.
  *
- * @see <a href="https://github.com/IvanGoncharov/graphql-voyager#properties">GraphQL GraphiQL Properties</a>
+ * @see <a href="https://github.com/graphql/graphiql/blob/main/packages/graphiql/README.md#props">GraphQL GraphiQL Properties</a>
  */
 @ConfigurationProperties(prefix = "spring.graphql.graphiql")
 public class GraphiqlProperties {
