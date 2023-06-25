@@ -17,18 +17,18 @@ public class PlaygroundWebMvcAutoConfiguration {
 
     @Bean
     @Order(-1)
-    public RouterFunction<ServerResponse> graphiQlRouterFunction(PlaygroundProperties properties,
+    public RouterFunction<ServerResponse> playgroundRouterFunction(PlaygroundProperties properties,
                                                                  @Value("${spring.graphql.path:/graphql}") String serverPath) {
         RouterFunctions.Builder builder = RouterFunctions.route();
         if (properties.isEnabled()) {
-            final HandlerFunction<ServerResponse> graphiql = e -> RenderingResponse.create("playground")
+            final HandlerFunction<ServerResponse> handler = e -> RenderingResponse.create("playground")
                     .modelAttribute("cdnHost", properties.getCdn().getHost())
                     .modelAttribute("serverPath", serverPath)
                     .modelAttribute("settings", properties.getSettings())
                     .modelAttribute("headers", properties.getHeaders())
                     .modelAttribute("tabs", properties.getTabs())
                     .build();
-            builder = builder.GET(properties.getPath(), graphiql);
+            builder = builder.GET(properties.getPath(), handler);
         }
         return builder.build();
     }

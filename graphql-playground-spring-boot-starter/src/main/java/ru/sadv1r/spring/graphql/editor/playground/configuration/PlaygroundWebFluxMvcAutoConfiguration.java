@@ -23,14 +23,14 @@ public class PlaygroundWebFluxMvcAutoConfiguration {
                                                                            @Value("${spring.graphql.path:/graphql}") String serverPath) {
         RouterFunctions.Builder builder = RouterFunctions.route();
         if (properties.isEnabled()) {
-            final HandlerFunction<ServerResponse> graphiql = e -> (Mono<ServerResponse>) (Mono<?>) RenderingResponse.create("playground")
+            final HandlerFunction<ServerResponse> handler = e -> (Mono<ServerResponse>) (Mono<?>) RenderingResponse.create("playground")
                     .modelAttribute("cdnHost", properties.getCdn().getHost())
                     .modelAttribute("serverPath", serverPath)
                     .modelAttribute("settings", properties.getSettings())
                     .modelAttribute("headers", properties.getHeaders())
                     .modelAttribute("tabs", properties.getTabs())
                     .build();
-            builder = builder.GET(properties.getPath(), graphiql);
+            builder = builder.GET(properties.getPath(), handler);
         }
         return builder.build();
     }

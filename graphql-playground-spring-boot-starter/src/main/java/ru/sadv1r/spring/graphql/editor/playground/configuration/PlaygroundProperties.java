@@ -3,7 +3,6 @@ package ru.sadv1r.spring.graphql.editor.playground.configuration;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.FileCopyUtils;
@@ -382,7 +381,7 @@ public class PlaygroundProperties {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private class Tab {
+    private static class Tab {
 
         private String endpoint;
 
@@ -390,9 +389,9 @@ public class PlaygroundProperties {
 
         private String name;
 
-//        private Object variables; TODO
+        private String variables;
 
-//        private Object responses; TODO
+        private List<String> responses;
 
         private Map<String, String> headers;
 
@@ -418,6 +417,22 @@ public class PlaygroundProperties {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getVariables() {
+            return variables;
+        }
+
+        public void setVariables(String variables) {
+            this.variables = variables;
+        }
+
+        public List<String> getResponses() {
+            return responses;
+        }
+
+        public void setResponses(List<String> responses) {
+            this.responses = responses;
         }
 
         public Map<String, String> getHeaders() {
