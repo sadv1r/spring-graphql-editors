@@ -12,3 +12,39 @@ spring:
         id: 1
       headers:
         x-test: test
+    playground:
+      settings:
+        editor:
+          cursor-shape: line
+          font-family: Consolas
+          font-size: 14
+          reuse-headers: true
+          theme: light
+      headers:
+        x-test: test
+      tabs:
+        - name: Query
+          endpoint: http://localhost:8080/graphql
+          query: |-
+            query($id: ID!) {
+              artifactRepository(id: $id) {
+                name
+                url
+              }
+            }
+          variables: |-
+            {
+              "id": 1
+            }
+          responses:
+            - >
+              {
+                "data": {
+                  "artifactRepositories": [{
+                    "name": "test",
+                    "url": "http://localhost:8080"
+                  }]
+                }
+              }
+          headers:
+            x-test2: test2

@@ -150,7 +150,8 @@ graphql:
     headers:
       x-test: test
     tabs:
-      - endpoint: http://localhost:8080/graphql
+      - name: GraphQL
+        endpoint: http://localhost:8080/graphql
         query: |-
           query($id: ID!) {
             artifactRepository(id: $id) {
@@ -158,10 +159,20 @@ graphql:
                url
             }
           }
-        name: GraphQL
-        variables: '{"id": 1}'
-        responses: 
-          - '{"data": null}'
+        variables: |-
+          {
+            "id": 1
+          }
+        responses:
+          - >
+            {
+              "data": {
+                "artifactRepositories": [{
+                  "name": "test",
+                  "url": "http://localhost:8080"
+                }]
+              }
+            }
         headers:
           x-test2: test2
     cdn: unpkg
