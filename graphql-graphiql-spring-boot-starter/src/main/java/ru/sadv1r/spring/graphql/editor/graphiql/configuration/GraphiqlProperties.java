@@ -25,7 +25,7 @@ public class GraphiqlProperties {
 
     private String query;
 
-    private DefaultEditorTollsVisibility defaultEditorToolsVisibility = DefaultEditorTollsVisibility.SHOWN;
+    private DefaultEditorToolsVisibility defaultEditorToolsVisibility = DefaultEditorToolsVisibility.SHOWN;
 
     private Map<String, String> variables;
 
@@ -57,11 +57,11 @@ public class GraphiqlProperties {
         this.query = readIfPath(query);
     }
 
-    public DefaultEditorTollsVisibility getDefaultEditorToolsVisibility() {
+    public DefaultEditorToolsVisibility getDefaultEditorToolsVisibility() {
         return defaultEditorToolsVisibility;
     }
 
-    public void setDefaultEditorToolsVisibility(DefaultEditorTollsVisibility defaultEditorToolsVisibility) {
+    public void setDefaultEditorToolsVisibility(DefaultEditorToolsVisibility defaultEditorToolsVisibility) {
         this.defaultEditorToolsVisibility = defaultEditorToolsVisibility;
     }
 
@@ -105,7 +105,7 @@ public class GraphiqlProperties {
         return query;
     }
 
-    public enum DefaultEditorTollsVisibility {
+    public enum DefaultEditorToolsVisibility {
         SHOWN(true),
         HIDDEN(false),
         VARIABLES("'variables'"),
@@ -113,7 +113,7 @@ public class GraphiqlProperties {
 
         private final Object value;
 
-        DefaultEditorTollsVisibility(Object value) {
+        DefaultEditorToolsVisibility(Object value) {
             this.value = value;
         }
 
