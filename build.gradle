@@ -1,7 +1,7 @@
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
-    id 'org.springframework.boot' version '2.7.4' apply false
+    id 'org.springframework.boot' version '2.7.16' apply false
 }
 
 ext {
