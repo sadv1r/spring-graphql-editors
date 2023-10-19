@@ -79,6 +79,7 @@ graphql:
       id: 1
     headers:
       x-test: test
+    plugins: EXPLORER
     cdn: unpkg
 ```
 
