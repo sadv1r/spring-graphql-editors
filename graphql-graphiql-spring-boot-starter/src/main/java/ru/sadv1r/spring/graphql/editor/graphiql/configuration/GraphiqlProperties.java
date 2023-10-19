@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Configuration properties for the GraphiQL GraphQL editor.
@@ -30,6 +31,8 @@ public class GraphiqlProperties {
     private Map<String, String> variables;
 
     private Map<String, String> headers;
+
+    private Set<Plugin> plugins = Set.of();
 
     private Cdn cdn = Cdn.UNPKG;
 
@@ -81,6 +84,14 @@ public class GraphiqlProperties {
         this.headers = headers;
     }
 
+    public Set<Plugin> getPlugins() {
+        return plugins;
+    }
+
+    public void setPlugins(Set<Plugin> plugins) {
+        this.plugins = plugins;
+    }
+
     public Cdn getCdn() {
         return cdn;
     }
@@ -120,6 +131,13 @@ public class GraphiqlProperties {
         public Object getValue() {
             return value;
         }
+    }
+
+    public enum Plugin {
+        /**
+         * @see <a href="https://github.com/graphql/graphiql/tree/main/packages/graphiql-plugin-explorer">GraphiQL Explorer Plugin</a>
+         */
+        EXPLORER
     }
 
     public enum Cdn {

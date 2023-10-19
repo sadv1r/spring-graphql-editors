@@ -30,6 +30,7 @@ public class GraphiQlWebFluxMvcAutoConfiguration {
                     .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
                     .modelAttribute("variables", properties.getVariables())
                     .modelAttribute("headers", properties.getHeaders())
+                    .modelAttribute("plugins", properties.getPlugins())
                     .build();
             builder = builder.GET(properties.getPath(), graphiql);
         }
