@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>GraphiQL</title>
     <style>
         body {
             height: 100%;
@@ -14,23 +15,23 @@
         }
     </style>
 
-    <script crossorigin th:src="|${cdnHost}/react@17/umd/react.development.js|"></script>
-    <script crossorigin th:src="|${cdnHost}/react-dom@17/umd/react-dom.development.js|"></script>
+    <script crossorigin th:src="|${cdnHost}/react@18/umd/react.development.js|"></script>
+    <script crossorigin th:src="|${cdnHost}/react-dom@18/umd/react-dom.development.js|"></script>
 
+    <script th:src="|${cdnHost}/graphiql/graphiql.min.js|" type="application/javascript"></script>
     <link rel="stylesheet" th:href="|${cdnHost}/graphiql/graphiql.min.css|"/>
 </head>
 <body>
 <div id="graphiql">Loading...</div>
-<script th:src="|${cdnHost}/graphiql/graphiql.min.js|" type="application/javascript"></script>
-
 <script th:inline="javascript">
-    ReactDOM.render(
+    const root = ReactDOM.createRoot(document.getElementById('graphiql'));
+    root.render(
         React.createElement(GraphiQL, {
             fetcher: GraphiQL.createFetcher({
                 url: '[(${serverPath})]',
             }),
             query: [[${query}]],
-            defaultVariableEditorOpen: true,
+            defaultEditorToolsVisibility: [(${defaultEditorToolsVisibility.value})],
             headerEditorEnabled: true,
             shouldPersistHeaders: true,
             // variables: '[[${variables}]]',
@@ -38,7 +39,6 @@
             // headers: '[[${headers}]]',
             headers: JSON.stringify([[${headers}]], undefined, 2),
         }),
-        document.getElementById('graphiql'),
     );
 </script>
 </body>
