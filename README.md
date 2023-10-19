@@ -74,6 +74,7 @@ graphql:
            url
         }
       }
+    default-editor-tools-visibility: VARIABLES
     variables:
       id: 1
     headers:

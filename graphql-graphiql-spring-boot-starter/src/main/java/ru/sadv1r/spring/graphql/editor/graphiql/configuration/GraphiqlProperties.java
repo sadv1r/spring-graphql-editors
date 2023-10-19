@@ -25,6 +25,8 @@ public class GraphiqlProperties {
 
     private String query;
 
+    private DefaultEditorTollsVisibility defaultEditorToolsVisibility = DefaultEditorTollsVisibility.SHOWN;
+
     private Map<String, String> variables;
 
     private Map<String, String> headers;
@@ -53,6 +55,14 @@ public class GraphiqlProperties {
 
     public void setQuery(String query) {
         this.query = readIfPath(query);
+    }
+
+    public DefaultEditorTollsVisibility getDefaultEditorToolsVisibility() {
+        return defaultEditorToolsVisibility;
+    }
+
+    public void setDefaultEditorToolsVisibility(DefaultEditorTollsVisibility defaultEditorToolsVisibility) {
+        this.defaultEditorToolsVisibility = defaultEditorToolsVisibility;
     }
 
     public Map<String, String> getVariables() {
@@ -95,8 +105,24 @@ public class GraphiqlProperties {
         return query;
     }
 
-    public enum Cdn {
+    public enum DefaultEditorTollsVisibility {
+        SHOWN(true),
+        HIDDEN(false),
+        VARIABLES("'variables'"),
+        HEADERS("'headers'");
 
+        private final Object value;
+
+        DefaultEditorTollsVisibility(Object value) {
+            this.value = value;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+    }
+
+    public enum Cdn {
         JSDELIVR,
         UNPKG;
 
