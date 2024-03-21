@@ -25,7 +25,8 @@ public class ServletVoyagerController {
                 .addAttribute("serverPath", serverPath)
                 .addAttribute("displayOptions", properties.getDisplayOptions())
                 .addAttribute("hideDocs", properties.isHideDocs())
-                .addAttribute("hideSettings", properties.isHideSettings());
+                .addAttribute("hideSettings", properties.isHideSettings())
+                .addAttribute("stylePath", properties.getStylePath());
         return "voyager";
     }
 

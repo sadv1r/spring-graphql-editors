@@ -31,6 +31,7 @@ graphql:
     hideDocs: false
     hideSettings: false
     cdn: unpkg
+    stylePath: /style.css
 ```
 
 ### Dependency
