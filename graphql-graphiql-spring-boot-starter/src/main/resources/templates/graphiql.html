@@ -25,6 +25,8 @@
             crossorigin th:src="|${cdnHost}/@graphiql/plugin-explorer/dist/index.umd.js|"></script>
     <link th:if="${plugins.contains(T(ru.sadv1r.spring.graphql.editor.graphiql.configuration.GraphiqlProperties.Plugin).EXPLORER)}"
           rel="stylesheet" th:href="|${cdnHost}/@graphiql/plugin-explorer/dist/style.css|"/>
+
+    <link th:if="${stylePath}" rel="stylesheet" th:href="|${stylePath}|"/>
 </head>
 <body>
 <div id="graphiql">Loading...</div>

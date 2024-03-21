@@ -36,6 +36,8 @@ public class GraphiqlProperties {
 
     private Cdn cdn = Cdn.UNPKG;
 
+    private String stylePath;
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -98,6 +100,14 @@ public class GraphiqlProperties {
 
     public void setCdn(Cdn cdn) {
         this.cdn = cdn;
+    }
+
+    public String getStylePath() {
+        return stylePath;
+    }
+
+    public void setStylePath(String stylePath) {
+        this.stylePath = stylePath;
     }
 
     private static String readIfPath(String query) {

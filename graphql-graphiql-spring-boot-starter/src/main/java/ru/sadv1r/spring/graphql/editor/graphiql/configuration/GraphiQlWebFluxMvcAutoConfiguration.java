@@ -31,6 +31,7 @@ public class GraphiQlWebFluxMvcAutoConfiguration {
                     .modelAttribute("variables", properties.getVariables())
                     .modelAttribute("headers", properties.getHeaders())
                     .modelAttribute("plugins", properties.getPlugins())
+                    .modelAttribute("stylePath", properties.getStylePath())
                     .build();
             builder = builder.GET(properties.getPath(), graphiql);
         }
