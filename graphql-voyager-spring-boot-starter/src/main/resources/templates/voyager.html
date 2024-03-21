@@ -9,6 +9,8 @@
             th:href="|${cdnHost}/graphql-voyager/dist/voyager.css|"
     />
     <script th:src="|${cdnHost}/graphql-voyager/dist/voyager.min.js|"></script>
+
+    <link th:if="${stylePath}" rel="stylesheet" th:href="|${stylePath}|"/>
 </head>
 <body>
 <div id="voyager">Loading...</div>

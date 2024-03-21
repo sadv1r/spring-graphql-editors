@@ -9,6 +9,8 @@ spring:
         x-test: test
       plugins: EXPLORER
       stylePath: /style.css
+    voyager:
+      style-path: /style.css
     playground:
       settings:
         editor:

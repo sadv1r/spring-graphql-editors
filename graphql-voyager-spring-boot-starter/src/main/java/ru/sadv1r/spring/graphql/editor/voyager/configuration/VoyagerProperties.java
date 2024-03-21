@@ -30,6 +30,8 @@ public class VoyagerProperties {
 
     private Cdn cdn = Cdn.JSDELIVR;
 
+    private String stylePath;
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -76,6 +78,14 @@ public class VoyagerProperties {
 
     public void setCdn(Cdn cdn) {
         this.cdn = cdn;
+    }
+
+    public String getStylePath() {
+        return stylePath;
+    }
+
+    public void setStylePath(String stylePath) {
+        this.stylePath = stylePath;
     }
 
     private static class DisplayOptions {

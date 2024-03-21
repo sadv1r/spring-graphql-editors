@@ -1,3 +1,10 @@
+/*GraphiQL*/
 .graphiql-logo-link {
     --color-neutral: 24, 28%, 32%;
+}
+
+/*Voyager*/
+.doc-navigation > .header {
+    font-weight: bold;
+    color: #600;
 }

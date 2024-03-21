@@ -28,6 +28,7 @@ public class ReactiveVoyagerController {
                         .modelAttribute("displayOptions", properties.getDisplayOptions())
                         .modelAttribute("hideDocs", properties.isHideDocs())
                         .modelAttribute("hideSettings", properties.isHideSettings())
+                        .modelAttribute("stylePath", properties.getStylePath())
                         .build()
         );
     }
