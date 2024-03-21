@@ -29,3 +29,11 @@ jobs:
 
       - name: Run Tests
         run: ./gradlew test
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            ./graphql-voyager-spring-boot-starter/build/libs/*.jar
+            ./graphql-graphiql-spring-boot-starter/build/libs/*.jar
+            ./graphql-playground-spring-boot-starter/build/libs/*.jar
