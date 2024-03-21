@@ -81,6 +81,7 @@ graphql:
       x-test: test
     plugins: EXPLORER
     cdn: unpkg
+    stylePath: /style.css
 ```
 
 Since setting (large) query in the properties like this isn't very readable, you can provide a file path instead:
