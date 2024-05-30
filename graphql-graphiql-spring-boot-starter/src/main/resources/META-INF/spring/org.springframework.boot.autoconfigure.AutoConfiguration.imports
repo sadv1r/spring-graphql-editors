@@ -1,2 +1,2 @@
-ru.sadv1r.spring.graphql.editor.graphiql.configuration.GraphiQlWebFluxMvcAutoConfiguration
+ru.sadv1r.spring.graphql.editor.graphiql.configuration.GraphiQlWebFluxAutoConfiguration
 ru.sadv1r.spring.graphql.editor.graphiql.configuration.GraphiQlWebMvcAutoConfiguration

@@ -1,4 +1,4 @@
-package ru.sadv1r.spring.graphql.editor.playground.configuration;
+package ru.sadv1r.spring.graphql.editor.voyager.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -12,21 +12,22 @@ import org.springframework.web.servlet.function.*;
 import static org.springframework.web.servlet.function.RequestPredicates.GET;
 
 @AutoConfiguration
-@EnableConfigurationProperties(PlaygroundProperties.class)
+@EnableConfigurationProperties(VoyagerProperties.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@ConditionalOnProperty(value = "spring.graphql.playground.enabled", havingValue = "true", matchIfMissing = true)
-public class PlaygroundWebMvcAutoConfiguration {
+@ConditionalOnProperty(value = "spring.graphql.voyager.enabled", havingValue = "true", matchIfMissing = true)
+public class VoyagerWebMvcAutoConfiguration {
 
     @Bean
     @Order(-1)
-    public RouterFunction<ServerResponse> playgroundRouterFunction(PlaygroundProperties properties,
-                                                                   @Value("${spring.graphql.path:/graphql}") String serverPath) {
-        final HandlerFunction<ServerResponse> handler = e -> RenderingResponse.create("playground")
+    public RouterFunction<ServerResponse> voyagerRouterFunction(VoyagerProperties properties,
+                                                                 @Value("${spring.graphql.path:/graphql}") String serverPath) {
+        final HandlerFunction<ServerResponse> handler = e -> RenderingResponse.create("voyager")
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
                 .modelAttribute("serverPath", serverPath)
-                .modelAttribute("settings", properties.getSettings())
-                .modelAttribute("headers", properties.getHeaders())
-                .modelAttribute("tabs", properties.getTabs())
+                .modelAttribute("displayOptions", properties.getDisplayOptions())
+                .modelAttribute("hideDocs", properties.isHideDocs())
+                .modelAttribute("hideSettings", properties.isHideSettings())
+                .modelAttribute("stylePath", properties.getStylePath())
                 .build();
 
         return RouterFunctions.route(GET(properties.getPath()), handler);
