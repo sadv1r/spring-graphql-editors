@@ -1,4 +1,4 @@
-package ru.sadv1r.spring.graphql.editor.playground.configuration;
+package ru.sadv1r.spring.graphql.editor.graphiql.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -15,21 +15,24 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 
 @AutoConfiguration
-@EnableConfigurationProperties(PlaygroundProperties.class)
+@EnableConfigurationProperties(GraphiqlProperties.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@ConditionalOnProperty(value = "spring.graphql.playground.enabled", havingValue = "true", matchIfMissing = true)
-public class PlaygroundWebFluxMvcAutoConfiguration {
+@ConditionalOnProperty(value = "spring.graphql.graphiql.enabled", havingValue = "true", matchIfMissing = true)
+public class GraphiQlWebFluxAutoConfiguration {
 
     @Bean
     @Order(-1)
-    public RouterFunction<RenderingResponse> reactivePlaygroundRouterFunction(PlaygroundProperties properties,
-                                                                              @Value("${spring.graphql.path:/graphql}") String serverPath) {
-        final HandlerFunction<RenderingResponse> handler = e -> RenderingResponse.create("playground")
+    public RouterFunction<RenderingResponse> reactiveGraphiQlRouterFunction(GraphiqlProperties properties,
+                                                                            @Value("${spring.graphql.path:/graphql}") String serverPath) {
+        final HandlerFunction<RenderingResponse> handler = e -> RenderingResponse.create("graphiql")
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
                 .modelAttribute("serverPath", serverPath)
-                .modelAttribute("settings", properties.getSettings())
+                .modelAttribute("query", properties.getQuery())
+                .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
+                .modelAttribute("variables", properties.getVariables())
                 .modelAttribute("headers", properties.getHeaders())
-                .modelAttribute("tabs", properties.getTabs())
+                .modelAttribute("plugins", properties.getPlugins())
+                .modelAttribute("stylePath", properties.getStylePath())
                 .build();
 
         return RouterFunctions.route(GET(properties.getPath()), handler);

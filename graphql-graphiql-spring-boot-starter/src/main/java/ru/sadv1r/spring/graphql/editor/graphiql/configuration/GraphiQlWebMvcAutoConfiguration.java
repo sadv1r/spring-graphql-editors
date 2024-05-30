@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.function.*;
 
+import static org.springframework.web.servlet.function.RequestPredicates.GET;
+
 @AutoConfiguration
 @EnableConfigurationProperties(GraphiqlProperties.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
@@ -19,21 +21,18 @@ public class GraphiQlWebMvcAutoConfiguration {
     @Order(-1)
     public RouterFunction<ServerResponse> graphiQlRouterFunction(GraphiqlProperties properties,
                                                                  @Value("${spring.graphql.path:/graphql}") String serverPath) {
-        RouterFunctions.Builder builder = RouterFunctions.route();
-        if (properties.isEnabled()) {
-            final HandlerFunction<ServerResponse> graphiql = e -> RenderingResponse.create("graphiql")
-                    .modelAttribute("cdnHost", properties.getCdn().getHost())
-                    .modelAttribute("serverPath", serverPath)
-                    .modelAttribute("query", properties.getQuery())
-                    .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
-                    .modelAttribute("variables", properties.getVariables())
-                    .modelAttribute("headers", properties.getHeaders())
-                    .modelAttribute("plugins", properties.getPlugins())
-                    .modelAttribute("stylePath", properties.getStylePath())
-                    .build();
-            builder = builder.GET(properties.getPath(), graphiql);
-        }
-        return builder.build();
+        final HandlerFunction<ServerResponse> handler = e -> RenderingResponse.create("graphiql")
+                .modelAttribute("cdnHost", properties.getCdn().getHost())
+                .modelAttribute("serverPath", serverPath)
+                .modelAttribute("query", properties.getQuery())
+                .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
+                .modelAttribute("variables", properties.getVariables())
+                .modelAttribute("headers", properties.getHeaders())
+                .modelAttribute("plugins", properties.getPlugins())
+                .modelAttribute("stylePath", properties.getStylePath())
+                .build();
+
+        return RouterFunctions.route(GET(properties.getPath()), handler);
     }
 
 }

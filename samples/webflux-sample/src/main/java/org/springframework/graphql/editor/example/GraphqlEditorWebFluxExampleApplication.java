@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GraphqlEditorWebfluxExampleApplication {
+public class GraphqlEditorWebFluxExampleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GraphqlEditorWebfluxExampleApplication.class, args);
+        SpringApplication.run(GraphqlEditorWebFluxExampleApplication.class, args);
     }
 
 }

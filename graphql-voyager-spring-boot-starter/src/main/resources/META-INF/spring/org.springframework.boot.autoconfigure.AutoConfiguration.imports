@@ -1,1 +1,2 @@
-ru.sadv1r.spring.graphql.editor.voyager.configuration.VoyagerAutoConfiguration
+ru.sadv1r.spring.graphql.editor.voyager.configuration.VoyagerWebFluxAutoConfiguration
+ru.sadv1r.spring.graphql.editor.voyager.configuration.VoyagerWebMvcAutoConfiguration
