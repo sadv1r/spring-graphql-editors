@@ -8,7 +8,7 @@ without it, you just need to provide GraphQL path as `spring.graphql.path` param
 
 ## GraphQL Voyager
 
-[![Maven Central](https://img.shields.io/maven-central/v/ru.sadv1r.spring.graphql/graphql-voyager-spring-boot-starter)](https://search.maven.org/artifact/ru.sadv1r.spring.graphql/graphql-voyager-spring-boot-starter/0.1.0/jar)
+[![Maven Central](https://img.shields.io/maven-central/v/ru.sadv1r.spring.graphql/graphql-voyager-spring-boot-starter)](https://search.maven.org/artifact/ru.sadv1r.spring.graphql/graphql-voyager-spring-boot-starter)
 [![GitHub Repo stars](https://img.shields.io/github/stars/IvanGoncharov/graphql-voyager?style=social)](https://github.com/IvanGoncharov/graphql-voyager)
 
 **GraphQL Voyager** becomes accessible at root `/voyager` (or as configured in `spring.graphql.voyager.path`).
@@ -43,19 +43,19 @@ graphql:
 <dependency>
     <groupId>ru.sadv1r.spring.graphql</groupId>
     <artifactId>graphql-voyager-spring-boot-starter</artifactId>
-    <version>0.1.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
 #### Gradle
 
 ```groovy
-implementation 'ru.sadv1r.spring.graphql:graphql-voyager-spring-boot-starter:0.1.0'
+implementation 'ru.sadv1r.spring.graphql:graphql-voyager-spring-boot-starter:0.4.0'
 ```
 
 ## Graph*i*QL
 
-[![Maven Central](https://img.shields.io/maven-central/v/ru.sadv1r.spring.graphql/graphql-graphiql-spring-boot-starter)](https://search.maven.org/artifact/ru.sadv1r.spring.graphql/graphql-graphiql-spring-boot-starter/0.1.0/jar)
+[![Maven Central](https://img.shields.io/maven-central/v/ru.sadv1r.spring.graphql/graphql-graphiql-spring-boot-starter)](https://search.maven.org/artifact/ru.sadv1r.spring.graphql/graphql-graphiql-spring-boot-starter)
 [![GitHub Repo stars](https://img.shields.io/github/stars/graphql/graphiql?style=social)](https://github.com/graphql/graphiql)
 
 **Graph*i*QL** becomes accessible at root `/graphiql` (or as configured in `spring.graphql.graphiql.path`).
@@ -103,19 +103,19 @@ graphql:
 <dependency>
     <groupId>ru.sadv1r.spring.graphql</groupId>
     <artifactId>graphql-graphiql-spring-boot-starter</artifactId>
-    <version>0.1.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
 #### Gradle
 
 ```groovy
-implementation 'ru.sadv1r.spring.graphql:graphql-graphiql-spring-boot-starter:0.1.0'
+implementation 'ru.sadv1r.spring.graphql:graphql-graphiql-spring-boot-starter:0.4.0'
 ```
 
 ## GraphQL Playground
 
-[![Maven Central](https://img.shields.io/maven-central/v/ru.sadv1r.spring.graphql/graphql-playground-spring-boot-starter)](https://search.maven.org/artifact/ru.sadv1r.spring.graphql/graphql-playground-spring-boot-starter/0.1.0/jar)
+[![Maven Central](https://img.shields.io/maven-central/v/ru.sadv1r.spring.graphql/graphql-playground-spring-boot-starter)](https://search.maven.org/artifact/ru.sadv1r.spring.graphql/graphql-playground-spring-boot-starter)
 [![GitHub Repo stars](https://img.shields.io/github/stars/prisma-labs/graphql-playground?style=social)](https://github.com/graphql/graphql-playground)
 
 **GraphQL Playground** becomes accessible at root `/playground` (or as configured in `spring.graphql.playground.path`).
@@ -202,12 +202,12 @@ graphql:
 <dependency>
     <groupId>ru.sadv1r.spring.graphql</groupId>
     <artifactId>graphql-playground-spring-boot-starter</artifactId>
-    <version>0.1.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
 #### Gradle
 
 ```groovy
-implementation 'ru.sadv1r.spring.graphql:graphql-playground-spring-boot-starter:0.1.0'
+implementation 'ru.sadv1r.spring.graphql:graphql-playground-spring-boot-starter:0.4.0'
 ```
