@@ -20,10 +20,12 @@ public class VoyagerWebMvcAutoConfiguration {
     @Bean
     @Order(-1)
     public RouterFunction<ServerResponse> voyagerRouterFunction(VoyagerProperties properties,
-                                                                 @Value("${spring.graphql.path:/graphql}") String serverPath) {
+                                                                @Value("${spring.graphql.path:/graphql}") String serverPath) {
+        String pathWithContext = serverPath.startsWith("/") ? serverPath : "/" + serverPath;
+
         final HandlerFunction<ServerResponse> handler = e -> RenderingResponse.create("voyager")
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
-                .modelAttribute("serverPath", serverPath)
+                .modelAttribute("serverPath", e.requestPath().contextPath().value() + pathWithContext)
                 .modelAttribute("displayOptions", properties.getDisplayOptions())
                 .modelAttribute("hideDocs", properties.isHideDocs())
                 .modelAttribute("hideSettings", properties.isHideSettings())
