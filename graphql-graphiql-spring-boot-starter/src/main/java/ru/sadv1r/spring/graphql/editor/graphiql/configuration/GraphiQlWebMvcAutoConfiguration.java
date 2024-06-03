@@ -21,9 +21,11 @@ public class GraphiQlWebMvcAutoConfiguration {
     @Order(-1)
     public RouterFunction<ServerResponse> graphiQlRouterFunction(GraphiqlProperties properties,
                                                                  @Value("${spring.graphql.path:/graphql}") String serverPath) {
+        String pathWithContext = serverPath.startsWith("/") ? serverPath : "/" + serverPath;
+
         final HandlerFunction<ServerResponse> handler = e -> RenderingResponse.create("graphiql")
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
-                .modelAttribute("serverPath", serverPath)
+                .modelAttribute("serverPath", e.requestPath().contextPath().value() + pathWithContext)
                 .modelAttribute("query", properties.getQuery())
                 .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
                 .modelAttribute("variables", properties.getVariables())

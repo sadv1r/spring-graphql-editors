@@ -21,9 +21,11 @@ public class PlaygroundWebMvcAutoConfiguration {
     @Order(-1)
     public RouterFunction<ServerResponse> playgroundRouterFunction(PlaygroundProperties properties,
                                                                    @Value("${spring.graphql.path:/graphql}") String serverPath) {
+        String pathWithContext = serverPath.startsWith("/") ? serverPath : "/" + serverPath;
+
         final HandlerFunction<ServerResponse> handler = e -> RenderingResponse.create("playground")
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
-                .modelAttribute("serverPath", serverPath)
+                .modelAttribute("serverPath", e.requestPath().contextPath().value() + pathWithContext)
                 .modelAttribute("settings", properties.getSettings())
                 .modelAttribute("headers", properties.getHeaders())
                 .modelAttribute("tabs", properties.getTabs())
