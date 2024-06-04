@@ -92,7 +92,7 @@ configure(moduleProjects) {
                     }
                 }
                 // to avoid "Publication only contains dependencies and/or constraints without a version" error
-                // see https://docs.gradle.org/7.5.1/userguide/publishing_maven.html#publishing_maven:resolved_dependencies
+                // see https://docs.gradle.org/7.6.4/userguide/publishing_maven.html#publishing_maven:resolved_dependencies
                 versionMapping {
                     usage('java-api') {
                         fromResolutionOf('runtimeClasspath')
