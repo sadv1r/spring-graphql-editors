@@ -1,7 +1,7 @@
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
-    id 'org.springframework.boot' version '2.7.18' apply false
+    id 'org.springframework.boot' version '3.3.0' apply false
 }
 
 ext {
@@ -29,7 +29,7 @@ configure(moduleProjects) {
 
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(11)
+            languageVersion = JavaLanguageVersion.of(17)
         }
     }
 
