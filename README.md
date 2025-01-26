@@ -1,6 +1,6 @@
 # Spring GraphQL Editors
 
-[![build](https://github.com/sadv1r/spring-graphql-editors/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/sadv1r/spring-graphql-editors/actions/workflows/build.yml)
+[![build](https://github.com/sadv1r/spring-graphql-editors/actions/workflows/build.yml/badge.svg)](https://github.com/sadv1r/spring-graphql-editors/actions/workflows/build.yml)
 
 These starters intend to be used
 with [spring-boot-starter-graphql](https://docs.spring.io/spring-graphql/docs/current/reference/html/), but it will work
