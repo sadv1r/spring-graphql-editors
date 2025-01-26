@@ -28,9 +28,9 @@ public class GraphiqlProperties {
 
     private DefaultEditorToolsVisibility defaultEditorToolsVisibility = DefaultEditorToolsVisibility.SHOWN;
 
-    private Map<String, String> variables;
+    private Map<String, String> variables = Map.of();
 
-    private Map<String, String> headers;
+    private Map<String, String> headers = Map.of();
 
     private Set<Plugin> plugins = Set.of();
 
