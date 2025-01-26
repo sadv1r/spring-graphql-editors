@@ -13,7 +13,7 @@ ext {
 
 subprojects {
     group 'ru.sadv1r.spring.graphql'
-    version '0.4.0'
+    version '0.5.0'
 
     repositories {
         mavenCentral()
@@ -91,7 +91,7 @@ configure(moduleProjects) {
                     }
                 }
                 // to avoid "Publication only contains dependencies and/or constraints without a version" error
-                // see https://docs.gradle.org/7.6.4/userguide/publishing_maven.html#publishing_maven:resolved_dependencies
+                // see https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:resolved_dependencies
                 versionMapping {
                     usage('java-api') {
                         fromResolutionOf('runtimeClasspath')

@@ -43,14 +43,14 @@ graphql:
 <dependency>
     <groupId>ru.sadv1r.spring.graphql</groupId>
     <artifactId>graphql-voyager-spring-boot-starter</artifactId>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
 #### Gradle
 
 ```groovy
-implementation 'ru.sadv1r.spring.graphql:graphql-voyager-spring-boot-starter:0.4.0'
+implementation 'ru.sadv1r.spring.graphql:graphql-voyager-spring-boot-starter:0.5.0'
 ```
 
 ## Graph*i*QL
@@ -103,12 +103,12 @@ graphql:
 <dependency>
     <groupId>ru.sadv1r.spring.graphql</groupId>
     <artifactId>graphql-graphiql-spring-boot-starter</artifactId>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
 #### Gradle
 
 ```groovy
-implementation 'ru.sadv1r.spring.graphql:graphql-graphiql-spring-boot-starter:0.4.0'
+implementation 'ru.sadv1r.spring.graphql:graphql-graphiql-spring-boot-starter:0.5.0'
 ```
