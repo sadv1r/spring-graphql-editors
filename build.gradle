@@ -7,8 +7,7 @@ plugins {
 ext {
     moduleProjects = [
             project(":graphql-voyager-spring-boot-starter"),
-            project(":graphql-graphiql-spring-boot-starter"),
-            project(":graphql-playground-spring-boot-starter")
+            project(":graphql-graphiql-spring-boot-starter")
     ]
 }
 
