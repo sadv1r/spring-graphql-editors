@@ -105,12 +105,11 @@ configure(moduleProjects) {
 
         repositories {
             maven {
+                name = "OSSRH"
+                url = version.endsWith('SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
                 credentials {
-                    credentials {
-                        url = version.endsWith('SNAPSHOT') ? 'https://oss.sonatype.org/content/repositories/snapshots' : 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-                        username = System.env.OSSRH_USERNAME ?: project.findProperty('ossrhUsername') ?: ''
-                        password = System.env.OSSRH_PASSWORD ?: project.findProperty('ossrhPassword') ?: ''
-                    }
+                    username = System.env.OSSRH_USERNAME ?: project.findProperty('ossrhUsername') ?: ''
+                    password = System.env.OSSRH_PASSWORD ?: project.findProperty('ossrhPassword') ?: ''
                 }
             }
         }
