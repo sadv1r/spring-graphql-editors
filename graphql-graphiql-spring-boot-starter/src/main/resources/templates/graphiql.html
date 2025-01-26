@@ -41,9 +41,7 @@
             defaultEditorToolsVisibility: [(${defaultEditorToolsVisibility.value})],
             headerEditorEnabled: true,
             shouldPersistHeaders: true,
-            // variables: '[[${variables}]]',
             variables: JSON.stringify([[${variables}]], undefined, 2),
-            // headers: '[[${headers}]]',
             headers: JSON.stringify([[${headers}]], undefined, 2),
             plugins: [
                 /*[# th:if="${plugins.contains(T(ru.sadv1r.spring.graphql.editor.graphiql.configuration.GraphiqlProperties.Plugin).EXPLORER)}"]*/
