@@ -9,7 +9,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation project(':graphql-voyager-spring-boot-starter')
     implementation project(':graphql-graphiql-spring-boot-starter')
-    implementation project(':graphql-playground-spring-boot-starter')
 }
 
 java {
