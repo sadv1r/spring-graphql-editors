@@ -10,4 +10,6 @@ spring:
       plugins: EXPLORER
       stylePath: /style.css
     voyager:
+      headers:
+        x-test: test
       style-path: /style.css

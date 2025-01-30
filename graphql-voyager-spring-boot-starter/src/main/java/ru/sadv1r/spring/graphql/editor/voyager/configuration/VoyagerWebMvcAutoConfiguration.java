@@ -29,6 +29,7 @@ public class VoyagerWebMvcAutoConfiguration {
                 .modelAttribute("displayOptions", properties.getDisplayOptions())
                 .modelAttribute("hideDocs", properties.isHideDocs())
                 .modelAttribute("hideSettings", properties.isHideSettings())
+                .modelAttribute("headers", properties.getHeaders())
                 .modelAttribute("stylePath", properties.getStylePath())
                 .build();
 
