@@ -21,6 +21,11 @@ public class VoyagerProperties {
     private DisplayOptions displayOptions = new DisplayOptions();
 
     /**
+     * Allow users to change schema
+     */
+    private boolean allowToChangeSchema = false;
+
+    /**
      * Hide the docs sidebar
      */
     private boolean hideDocs = false;
@@ -29,6 +34,11 @@ public class VoyagerProperties {
      * Hide settings panel
      */
     private boolean hideSettings = false;
+
+    /**
+     * Hide voyager logo
+     */
+    private boolean hideVoyagerLogo = true;
 
     private Map<String, String> headers = Map.of();
 
@@ -60,6 +70,14 @@ public class VoyagerProperties {
         this.displayOptions = displayOptions;
     }
 
+    public boolean isAllowToChangeSchema() {
+        return allowToChangeSchema;
+    }
+
+    public void setAllowToChangeSchema(boolean allowToChangeSchema) {
+        this.allowToChangeSchema = allowToChangeSchema;
+    }
+
     public boolean isHideDocs() {
         return hideDocs;
     }
@@ -76,6 +94,22 @@ public class VoyagerProperties {
         this.hideSettings = hideSettings;
     }
 
+    public boolean isHideVoyagerLogo() {
+        return hideVoyagerLogo;
+    }
+
+    public void setHideVoyagerLogo(boolean hideVoyagerLogo) {
+        this.hideVoyagerLogo = hideVoyagerLogo;
+    }
+
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
+    }
+
     public Cdn getCdn() {
         return cdn;
     }
@@ -90,14 +124,6 @@ public class VoyagerProperties {
 
     public void setStylePath(String stylePath) {
         this.stylePath = stylePath;
-    }
-
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
-
-    public void setHeaders(Map<String, String> headers) {
-        this.headers = headers;
     }
 
     private static class DisplayOptions {

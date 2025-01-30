@@ -27,8 +27,10 @@ public class VoyagerWebMvcAutoConfiguration {
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
                 .modelAttribute("serverPath", e.requestPath().contextPath().value() + pathWithContext)
                 .modelAttribute("displayOptions", properties.getDisplayOptions())
+                .modelAttribute("allowToChangeSchema", properties.isAllowToChangeSchema())
                 .modelAttribute("hideDocs", properties.isHideDocs())
                 .modelAttribute("hideSettings", properties.isHideSettings())
+                .modelAttribute("hideVoyagerLogo", properties.isHideVoyagerLogo())
                 .modelAttribute("headers", properties.getHeaders())
                 .modelAttribute("stylePath", properties.getStylePath())
                 .build();
