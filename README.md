@@ -90,10 +90,11 @@ spring:
 Since setting (large) query in the properties like this isn't very readable, you can provide a file path instead:
 
 ```yaml
-graphql:
-  graphiql:
-    enabled: true
-    query: example/query.graphql
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+      query: example/query.graphql
 ```
 
 ### Dependency
