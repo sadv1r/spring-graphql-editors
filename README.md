@@ -17,21 +17,22 @@ Available Spring Boot configuration parameters (either `application.yml`
 or `application.properties`):
 
 ```yaml
-graphql:
-  voyager:
-    enabled: true
-    path: /voyager
-    displayOptions:
-      skipRelay: true
-      skipDeprecated: true
-      rootType: Query
-      sortByAlphabet: false
-      showLeafFields: true
-      hideRoot: false
-    hideDocs: false
-    hideSettings: false
-    cdn: unpkg
-    stylePath: /style.css
+spring:
+  graphql:
+    voyager:
+      enabled: true
+      path: /voyager
+      displayOptions:
+        skipRelay: true
+        skipDeprecated: true
+        rootType: Query
+        sortByAlphabet: false
+        showLeafFields: true
+        hideRoot: false
+      hideDocs: false
+      hideSettings: false
+      cdn: unpkg
+      stylePath: /style.css
 ```
 
 ### Dependency
@@ -64,25 +65,26 @@ Available Spring Boot configuration parameters (either `application.yml`
 or `application.properties`):
 
 ```yaml
-graphql:
-  graphiql:
-    enabled: true
-    path: /graphiql
-    query: |-
-      query($id: ID!) {
-        artifactRepository(id: $id) {
-           name
-           url
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+      query: |-
+        query($id: ID!) {
+          artifactRepository(id: $id) {
+             name
+             url
+          }
         }
-      }
-    default-editor-tools-visibility: VARIABLES
-    variables:
-      id: 1
-    headers:
-      x-test: test
-    plugins: EXPLORER
-    cdn: unpkg
-    stylePath: /style.css
+      default-editor-tools-visibility: VARIABLES
+      variables:
+        id: 1
+      headers:
+        x-test: test
+      plugins: EXPLORER
+      cdn: unpkg
+      stylePath: /style.css
 ```
 
 Since setting (large) query in the properties like this isn't very readable, you can provide a file path instead:
