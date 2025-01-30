@@ -31,8 +31,11 @@
         {
             method: 'post',
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
+                ...{
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                ...[[${headers}]],
             },
             body: JSON.stringify({ query }),
             credentials: 'omit',
