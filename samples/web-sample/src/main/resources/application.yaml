@@ -16,6 +16,8 @@ spring:
       plugins: EXPLORER
       stylePath: /style.css
     voyager:
+      allow-to-change-schema: true
+      hide-voyager-logo: false
       headers:
         x-test: test
       style-path: /style.css
