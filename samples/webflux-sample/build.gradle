@@ -9,10 +9,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation project(':graphql-voyager-spring-boot-starter')
     implementation project(':graphql-graphiql-spring-boot-starter')
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.microsoft.playwright:playwright:1.49.0'
 }
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+}
+
+test {
+    useJUnitPlatform()
 }
