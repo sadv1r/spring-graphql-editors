@@ -81,4 +81,42 @@ public class GraphQlEditorWebFluxExampleApplicationTest {
                 """);
     }
 
+    @Test
+    public void testVoyagerSnapshot() {
+        page.navigate("http://localhost:" + port + "/voyager");
+
+        assertThat(page.locator("#voyager")).matchesAriaSnapshot("""
+                - link "GraphQL Voyager":
+                  - paragraph: GraphQL
+                  - paragraph: Voyager
+                - button "Change Schema"
+                - text: Type List
+                - textbox "Search Schema..."
+                - text: Query root
+                - button:
+                  - img
+                - paragraph: No Description
+                - text: ArtifactRepository
+                - button:
+                  - img
+                - paragraph: No Description
+                - text: Project
+                - button:
+                  - img
+                - paragraph: No Description
+                - text: Release
+                - button:
+                  - img
+                - paragraph: No Description
+                - paragraph:
+                  - text: 🛰 Powered by
+                  - link "GraphQL Voyager"
+                - img: \
+                Query greeting String artifactRepositories [ ArtifactRepository ] artifactRepository ArtifactRepository project Project \
+                ArtifactRepository id ID ! name String ! url String ! snapshotsEnabled Boolean \
+                Project slug ID ! name String ! repositoryUrl String ! status ProjectStatus ! releases [ Release ] \
+                Release version String ! status ReleaseStatus ! current Boolean
+                """);
+    }
+
 }
