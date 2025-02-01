@@ -1,12 +1,11 @@
 package org.springframework.graphql.editor.example;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+
+import java.nio.file.Paths;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -48,6 +47,11 @@ public class GraphQlEditorWebFluxExampleApplicationTest {
     void testGraphiQlSnapshot() {
         page.navigate("http://localhost:" + port + "/graphiql");
 
+        page.screenshot(
+                new Page.ScreenshotOptions()
+                        .setPath(Paths.get("../../screenshots/webflux-graphiql.png"))
+        );
+
         assertThat(page.getByTestId("graphiql-container")).matchesAriaSnapshot("""
                 - button "Show Documentation Explorer":
                   - img "docs icon"
@@ -85,7 +89,13 @@ public class GraphQlEditorWebFluxExampleApplicationTest {
     public void testVoyagerSnapshot() {
         page.navigate("http://localhost:" + port + "/voyager");
 
-        assertThat(page.locator("#voyager")).matchesAriaSnapshot("""
+        Locator locator = page.locator(".graphql-voyager");
+        locator.screenshot(
+                new Locator.ScreenshotOptions()
+                        .setPath(Paths.get("../../screenshots/webflux-voyager.png"))
+        );
+
+        assertThat(locator).matchesAriaSnapshot("""
                 - link "GraphQL Voyager":
                   - paragraph: GraphQL
                   - paragraph: Voyager
