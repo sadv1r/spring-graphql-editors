@@ -77,11 +77,11 @@ spring:
              url
           }
         }
+      default-headers:
+        x-test: test
       default-editor-tools-visibility: VARIABLES
       variables:
         id: 1
-      headers:
-        x-test: test
       plugins: EXPLORER
       cdn: unpkg
       stylePath: /style.css
