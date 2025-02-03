@@ -29,6 +29,7 @@ public class GraphiQlWebFluxAutoConfiguration {
         final HandlerFunction<RenderingResponse> handler = e -> RenderingResponse.create("graphiql")
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
                 .modelAttribute("serverPath", e.requestPath().contextPath().value() + pathWithContext)
+                .modelAttribute("defaultQuery", properties.getDefaultQuery())
                 .modelAttribute("query", properties.getQuery())
                 .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
                 .modelAttribute("variables", properties.getVariables())

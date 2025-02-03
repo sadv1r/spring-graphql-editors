@@ -24,6 +24,8 @@ public class GraphiqlProperties {
 
     private String path = "/graphiql";
 
+    private String defaultQuery;
+
     private String query;
 
     private DefaultEditorToolsVisibility defaultEditorToolsVisibility = DefaultEditorToolsVisibility.SHOWN;
@@ -52,6 +54,14 @@ public class GraphiqlProperties {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getDefaultQuery() {
+        return defaultQuery;
+    }
+
+    public void setDefaultQuery(String defaultQuery) {
+        this.defaultQuery = readIfPath(defaultQuery);
     }
 
     public String getQuery() {
