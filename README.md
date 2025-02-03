@@ -70,7 +70,7 @@ spring:
     graphiql:
       enabled: true
       path: /graphiql
-      query: |-
+      default-query: |-
         query($id: ID!) {
           artifactRepository(id: $id) {
              name
@@ -94,7 +94,7 @@ spring:
   graphql:
     graphiql:
       enabled: true
-      query: example/query.graphql
+      default-query: example/query.graphql
 ```
 
 ### Dependency

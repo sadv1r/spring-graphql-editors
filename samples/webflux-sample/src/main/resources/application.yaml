@@ -1,7 +1,7 @@
 spring:
   graphql:
     graphiql:
-      query: example/query.graphql
+      default-query: example/query.graphql
       default-editor-tools-visibility: VARIABLES
       variables:
         id: 1
