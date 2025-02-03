@@ -30,6 +30,7 @@ public class GraphiQlWebFluxAutoConfiguration {
                 .modelAttribute("cdnHost", properties.getCdn().getHost())
                 .modelAttribute("serverPath", e.requestPath().contextPath().value() + pathWithContext)
                 .modelAttribute("defaultQuery", properties.getDefaultQuery())
+                .modelAttribute("defaultHeaders", properties.getDefaultHeaders())
                 .modelAttribute("query", properties.getQuery())
                 .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
                 .modelAttribute("variables", properties.getVariables())

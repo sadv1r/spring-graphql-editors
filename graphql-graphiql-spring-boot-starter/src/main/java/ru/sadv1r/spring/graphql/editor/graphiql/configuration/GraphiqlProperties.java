@@ -28,6 +28,8 @@ public class GraphiqlProperties {
 
     private String query;
 
+    private Map<String, String> defaultHeaders = Map.of();
+
     private DefaultEditorToolsVisibility defaultEditorToolsVisibility = DefaultEditorToolsVisibility.SHOWN;
 
     private Map<String, String> variables = Map.of();
@@ -62,6 +64,14 @@ public class GraphiqlProperties {
 
     public void setDefaultQuery(String defaultQuery) {
         this.defaultQuery = readIfPath(defaultQuery);
+    }
+
+    public Map<String, String> getDefaultHeaders() {
+        return defaultHeaders;
+    }
+
+    public void setDefaultHeaders(Map<String, String> defaultHeaders) {
+        this.defaultHeaders = defaultHeaders;
     }
 
     public String getQuery() {
