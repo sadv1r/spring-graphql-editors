@@ -28,6 +28,7 @@ public class GraphiQlWebMvcAutoConfiguration {
                 .modelAttribute("serverPath", e.requestPath().contextPath().value() + pathWithContext)
                 .modelAttribute("defaultQuery", properties.getDefaultQuery())
                 .modelAttribute("defaultHeaders", properties.getDefaultHeaders())
+                .modelAttribute("defaultTabs", properties.getDefaultTabs())
                 .modelAttribute("query", properties.getQuery())
                 .modelAttribute("defaultEditorToolsVisibility", properties.getDefaultEditorToolsVisibility())
                 .modelAttribute("variables", properties.getVariables())

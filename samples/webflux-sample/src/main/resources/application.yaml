@@ -1,12 +1,26 @@
 spring:
   graphql:
     graphiql:
-      default-query: example/query.graphql
       default-headers:
         x-test: test
+      default-tabs:
+        - query: |-
+            query Query1($id: ID!) {
+              artifactRepository(id: $id) {
+                name
+                url
+              }
+            }
+          variables:
+            id: 1
+        - query: |-
+            query Query2 {
+              artifactRepositories {
+                name
+                url
+              }
+            }
       default-editor-tools-visibility: VARIABLES
-      variables:
-        id: 1
       plugins: EXPLORER
       stylePath: /style.css
     voyager:

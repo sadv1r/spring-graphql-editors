@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,6 +30,8 @@ public class GraphiqlProperties {
     private String query;
 
     private Map<String, String> defaultHeaders = Map.of();
+
+    private List<Tab> defaultTabs;
 
     private DefaultEditorToolsVisibility defaultEditorToolsVisibility = DefaultEditorToolsVisibility.SHOWN;
 
@@ -72,6 +75,14 @@ public class GraphiqlProperties {
 
     public void setDefaultHeaders(Map<String, String> defaultHeaders) {
         this.defaultHeaders = defaultHeaders;
+    }
+
+    public List<Tab> getDefaultTabs() {
+        return defaultTabs;
+    }
+
+    public void setDefaultTabs(List<Tab> defaultTabs) {
+        this.defaultTabs = defaultTabs;
     }
 
     public String getQuery() {
@@ -144,6 +155,40 @@ public class GraphiqlProperties {
         }
 
         return query;
+    }
+
+    public static class Tab {
+
+        private String query;
+
+        private Map<String, String> variables = Map.of();
+
+        private Map<String, String> headers = Map.of();
+
+        public String getQuery() {
+            return query;
+        }
+
+        public void setQuery(String query) {
+            this.query = readIfPath(query);
+        }
+
+        public Map<String, String> getVariables() {
+            return variables;
+        }
+
+        public void setVariables(Map<String, String> variables) {
+            this.variables = variables;
+        }
+
+        public Map<String, String> getHeaders() {
+            return headers;
+        }
+
+        public void setHeaders(Map<String, String> headers) {
+            this.headers = headers;
+        }
+
     }
 
     public enum DefaultEditorToolsVisibility {
