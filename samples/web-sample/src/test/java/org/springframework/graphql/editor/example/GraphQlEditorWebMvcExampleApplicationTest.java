@@ -52,16 +52,16 @@ public class GraphQlEditorWebMvcExampleApplicationTest {
                         .setPath(Paths.get("../../screenshots/webmvc-graphiql.png"))
         );
 
-        assertThat(page.getByTestId("graphiql-container")).matchesAriaSnapshot("""
+        assertThat(page.locator(".graphiql-container")).matchesAriaSnapshot("""
                 - button "Show Documentation Explorer":
-                  - img "docs icon"
+                  - img "icon"
                 - button "Show History"
                 - button "Show GraphiQL Explorer"
                 - button "Re-fetch GraphQL schema"
                 - button "Open short keys dialog"
                 - button "Open settings dialog"
                 - tablist "Select active operation"
-                - button "Add tab"
+                - button "New tab"
                 - link "GraphiQL":
                   - emphasis: i
                 - tabpanel:
@@ -70,7 +70,7 @@ public class GraphQlEditorWebMvcExampleApplicationTest {
                     - text: "query($id: ID!) { artifactRepository(id: $id) { name url } }"
                     - toolbar "Editor Commands":
                       - button "Execute query (Ctrl-Enter)":
-                        - img "play icon"
+                        - img "icon"
                       - button "Prettify query (Shift-Ctrl-P)"
                       - button "Merge fragments into query (Shift-Ctrl-M)"
                       - button "Copy query (Shift-Ctrl-C)"
