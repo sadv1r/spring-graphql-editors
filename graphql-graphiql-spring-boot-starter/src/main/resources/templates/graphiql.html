@@ -18,13 +18,13 @@
     <script crossorigin th:src="|${cdnHost}/react@18/umd/react.production.min.js|"></script>
     <script crossorigin th:src="|${cdnHost}/react-dom@18/umd/react-dom.production.min.js|"></script>
 
-    <script th:src="|${cdnHost}/graphiql/graphiql.min.js|" type="application/javascript"></script>
-    <link rel="stylesheet" th:href="|${cdnHost}/graphiql/graphiql.min.css|"/>
+    <script th:src="|${cdnHost}/graphiql@4/graphiql.min.js|" type="application/javascript"></script>
+    <link rel="stylesheet" th:href="|${cdnHost}/graphiql@4/graphiql.min.css|"/>
 
     <script th:if="${plugins.contains(T(ru.sadv1r.spring.graphql.editor.graphiql.configuration.GraphiqlProperties.Plugin).EXPLORER)}"
-            crossorigin th:src="|${cdnHost}/@graphiql/plugin-explorer/dist/index.umd.js|"></script>
+            crossorigin th:src="|${cdnHost}/@graphiql/plugin-explorer@4/dist/index.umd.js|"></script>
     <link th:if="${plugins.contains(T(ru.sadv1r.spring.graphql.editor.graphiql.configuration.GraphiqlProperties.Plugin).EXPLORER)}"
-          rel="stylesheet" th:href="|${cdnHost}/@graphiql/plugin-explorer/dist/style.css|"/>
+          rel="stylesheet" th:href="|${cdnHost}/@graphiql/plugin-explorer@4/dist/style.css|"/>
 
     <link th:if="${stylePath}" rel="stylesheet" th:href="|${stylePath}|"/>
 </head>
