@@ -1,18 +1,18 @@
 spring:
   graphql:
     graphiql:
-      default-query: |-
+      query: |-
         query($id: ID!) {
           artifactRepository(id: $id) {
             name
             url
           }
         }
-      default-headers:
-        x-test: test
-      default-editor-tools-visibility: VARIABLES
       variables:
         id: 1
+      headers:
+        x-test: test
+      default-editor-tools-visibility: VARIABLES
       plugins: EXPLORER
       stylePath: /style.css
     voyager:

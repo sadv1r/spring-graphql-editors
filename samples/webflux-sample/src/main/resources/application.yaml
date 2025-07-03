@@ -1,12 +1,12 @@
 spring:
   graphql:
     graphiql:
-      default-query: example/query.graphql
-      default-headers:
-        x-test: test
-      default-editor-tools-visibility: VARIABLES
+      query: example/query.graphql
       variables:
         id: 1
+      headers:
+        x-test: test
+      default-editor-tools-visibility: VARIABLES
       plugins: EXPLORER
       stylePath: /style.css
     voyager:
