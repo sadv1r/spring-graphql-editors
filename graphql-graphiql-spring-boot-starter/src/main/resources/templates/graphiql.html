@@ -36,6 +36,7 @@
         React.createElement(GraphiQL, {
             fetcher: GraphiQL.createFetcher({
                 url: '[(${serverPath})]',
+                headers: [[${headers}]]
             }),
             defaultQuery: [[${defaultQuery}]],
             query: [[${query}]],
