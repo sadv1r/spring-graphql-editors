@@ -44,14 +44,14 @@ spring:
 <dependency>
     <groupId>ru.sadv1r.spring.graphql</groupId>
     <artifactId>graphql-voyager-spring-boot-starter</artifactId>
-    <version>0.8.0</version>
+    <version>0.9.0</version>
 </dependency>
 ```
 
 #### Gradle
 
 ```groovy
-implementation 'ru.sadv1r.spring.graphql:graphql-voyager-spring-boot-starter:0.8.0'
+implementation 'ru.sadv1r.spring.graphql:graphql-voyager-spring-boot-starter:0.9.0'
 ```
 
 ## Graph*i*QL
@@ -70,18 +70,18 @@ spring:
     graphiql:
       enabled: true
       path: /graphiql
-      default-query: |-
+      query: |-
         query($id: ID!) {
           artifactRepository(id: $id) {
              name
              url
           }
         }
-      default-headers:
-        x-test: test
-      default-editor-tools-visibility: VARIABLES
       variables:
         id: 1
+      headers:
+        x-test: test
+      default-editor-tools-visibility: VARIABLES
       plugins: EXPLORER
       cdn: unpkg
       stylePath: /style.css
@@ -94,7 +94,7 @@ spring:
   graphql:
     graphiql:
       enabled: true
-      default-query: example/query.graphql
+      query: example/query.graphql
 ```
 
 ### Dependency
@@ -106,12 +106,12 @@ spring:
 <dependency>
     <groupId>ru.sadv1r.spring.graphql</groupId>
     <artifactId>graphql-graphiql-spring-boot-starter</artifactId>
-    <version>0.8.0</version>
+    <version>0.9.0</version>
 </dependency>
 ```
 
 #### Gradle
 
 ```groovy
-implementation 'ru.sadv1r.spring.graphql:graphql-graphiql-spring-boot-starter:0.8.0'
+implementation 'ru.sadv1r.spring.graphql:graphql-graphiql-spring-boot-starter:0.9.0'
 ```
