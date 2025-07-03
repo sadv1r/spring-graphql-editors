@@ -28,13 +28,11 @@ public class GraphiqlProperties {
 
     private String query;
 
-    private Map<String, String> defaultHeaders = Map.of();
-
-    private DefaultEditorToolsVisibility defaultEditorToolsVisibility = DefaultEditorToolsVisibility.SHOWN;
-
     private Map<String, String> variables = Map.of();
 
     private Map<String, String> headers = Map.of();
+
+    private DefaultEditorToolsVisibility defaultEditorToolsVisibility = DefaultEditorToolsVisibility.SHOWN;
 
     private Set<Plugin> plugins = Set.of();
 
@@ -66,28 +64,12 @@ public class GraphiqlProperties {
         this.defaultQuery = readIfPath(defaultQuery);
     }
 
-    public Map<String, String> getDefaultHeaders() {
-        return defaultHeaders;
-    }
-
-    public void setDefaultHeaders(Map<String, String> defaultHeaders) {
-        this.defaultHeaders = defaultHeaders;
-    }
-
     public String getQuery() {
         return query;
     }
 
     public void setQuery(String query) {
         this.query = readIfPath(query);
-    }
-
-    public DefaultEditorToolsVisibility getDefaultEditorToolsVisibility() {
-        return defaultEditorToolsVisibility;
-    }
-
-    public void setDefaultEditorToolsVisibility(DefaultEditorToolsVisibility defaultEditorToolsVisibility) {
-        this.defaultEditorToolsVisibility = defaultEditorToolsVisibility;
     }
 
     public Map<String, String> getVariables() {
@@ -104,6 +86,14 @@ public class GraphiqlProperties {
 
     public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
+    }
+
+    public DefaultEditorToolsVisibility getDefaultEditorToolsVisibility() {
+        return defaultEditorToolsVisibility;
+    }
+
+    public void setDefaultEditorToolsVisibility(DefaultEditorToolsVisibility defaultEditorToolsVisibility) {
+        this.defaultEditorToolsVisibility = defaultEditorToolsVisibility;
     }
 
     public Set<Plugin> getPlugins() {
