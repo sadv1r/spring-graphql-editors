@@ -26,8 +26,30 @@ jobs:
       - name: Run Tests
         run: ./gradlew test
 
-      - name: Upload Screenshots
+      - name: Upload WebFlux GraphiQL Screenshot
         uses: actions/upload-artifact@v7
+        if: always()
         with:
-          path: screenshots/*
+          path: screenshots/webflux-graphiql.png
+          archive: false
+
+      - name: Upload WebFlux Voyager Screenshot
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          path: screenshots/webflux-voyager.png
+          archive: false
+
+      - name: Upload WebMvc GraphiQL Screenshot
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          path: screenshots/webmvc-graphiql.png
+          archive: false
+
+      - name: Upload WebMvc Voyager Screenshot
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          path: screenshots/webmvc-voyager.png
           archive: false
